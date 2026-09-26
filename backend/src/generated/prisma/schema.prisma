@@ -1,0 +1,222 @@
+generator client {
+  provider     = "prisma-client-js"
+  output       = "../src/generated/prisma"
+  moduleFormat = "esm"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  SELLER
+  ACCOUNTANT
+}
+
+enum OrderStatus {
+  DRAFT
+  CONFIRMED
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CASH
+  TMONEY
+  MOOV_MONEY
+  BANK_TRANSFER
+  OTHER
+}
+
+enum ShipmentStatus {
+  PLANNED
+  IN_TRANSIT
+  RECEIVED
+  CANCELLED
+}
+
+enum StockMovementType {
+  IN
+  OUT
+  ADJUSTMENT
+}
+
+enum ExpenseCategory {
+  PURCHASE
+  TRANSPORT
+  DELIVERY
+  FUEL
+  COMMUNICATION
+  OTHER
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  phone        String?
+  role         Role      @default(SELLER)
+  active       Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  orders       Order[]
+  payments     Payment[]
+  expenses     Expense[]
+}
+
+model Customer {
+  id           String    @id @default(uuid())
+  code         String    @unique
+  name         String
+  businessName String?
+  phone        String?
+  whatsapp     String?
+  email        String?
+  address      String?
+  city         String?
+  creditLimit  Decimal   @default(0) @db.Decimal(15, 2)
+  active       Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  orders       Order[]
+  payments     Payment[]
+}
+
+model Supplier {
+  id        String     @id @default(uuid())
+  code      String     @unique
+  name      String
+  company   String?
+  phone     String?
+  whatsapp  String?
+  email     String?
+  address   String?
+  country   String     @default("Sénégal")
+  active    Boolean    @default(true)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  shipments Shipment[]
+}
+
+model Product {
+  id             String          @id @default(uuid())
+  sku            String          @unique
+  name           String
+  description    String?
+  unit           String          @default("kg")
+  purchasePrice  Decimal         @default(0) @db.Decimal(15, 2)
+  salePrice      Decimal         @default(0) @db.Decimal(15, 2)
+  reorderLevel   Decimal         @default(0) @db.Decimal(15, 3)
+  active         Boolean         @default(true)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  orderItems     OrderItem[]
+  shipmentItems  ShipmentItem[]
+  stockMovements StockMovement[]
+}
+
+model Shipment {
+  id            String         @id @default(uuid())
+  reference     String         @unique
+  supplierId    String
+  origin        String         @default("Sénégal")
+  destination   String         @default("Togo")
+  status        ShipmentStatus @default(PLANNED)
+  departureDate DateTime?
+  arrivalDate   DateTime?
+  transportCost Decimal        @default(0) @db.Decimal(15, 2)
+  otherCosts    Decimal        @default(0) @db.Decimal(15, 2)
+  notes         String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  supplier      Supplier       @relation(fields: [supplierId], references: [id])
+  items         ShipmentItem[]
+  expenses      Expense[]
+}
+
+model ShipmentItem {
+  id         String   @id @default(uuid())
+  shipmentId String
+  productId  String
+  quantity   Decimal  @db.Decimal(15, 3)
+  unitCost   Decimal  @db.Decimal(15, 2)
+  totalCost  Decimal  @db.Decimal(15, 2)
+  shipment   Shipment @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  product    Product  @relation(fields: [productId], references: [id])
+}
+
+model Order {
+  id          String      @id @default(uuid())
+  number      String      @unique
+  customerId  String?
+  userId      String
+  status      OrderStatus @default(CONFIRMED)
+  orderDate   DateTime    @default(now())
+  dueDate     DateTime?
+  subtotal    Decimal     @db.Decimal(15, 2)
+  discount    Decimal     @default(0) @db.Decimal(15, 2)
+  total       Decimal     @db.Decimal(15, 2)
+  paidTotal   Decimal     @default(0) @db.Decimal(15, 2)
+  creditTotal Decimal     @default(0) @db.Decimal(15, 2)
+  notes       String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  customer    Customer?   @relation(fields: [customerId], references: [id])
+  user        User        @relation(fields: [userId], references: [id])
+  items       OrderItem[]
+  payments    Payment[]
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  productId String
+  quantity  Decimal @db.Decimal(15, 3)
+  unitPrice Decimal @db.Decimal(15, 2)
+  total     Decimal @db.Decimal(15, 2)
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model Payment {
+  id         String        @id @default(uuid())
+  reference  String        @unique
+  orderId    String?
+  customerId String?
+  userId     String
+  amount     Decimal       @db.Decimal(15, 2)
+  method     PaymentMethod
+  receivedAt DateTime      @default(now())
+  note       String?
+  order      Order?        @relation(fields: [orderId], references: [id])
+  customer   Customer?     @relation(fields: [customerId], references: [id])
+  user       User          @relation(fields: [userId], references: [id])
+}
+
+model StockMovement {
+  id        String            @id @default(uuid())
+  productId String
+  type      StockMovementType
+  quantity  Decimal           @db.Decimal(15, 3)
+  unitCost  Decimal           @default(0) @db.Decimal(15, 2)
+  reference String?
+  note      String?
+  createdAt DateTime          @default(now())
+  product   Product           @relation(fields: [productId], references: [id])
+}
+
+model Expense {
+  id          String          @id @default(uuid())
+  reference   String          @unique
+  category    ExpenseCategory
+  amount      Decimal         @db.Decimal(15, 2)
+  expenseDate DateTime        @default(now())
+  description String?
+  shipmentId  String?
+  userId      String
+  shipment    Shipment?       @relation(fields: [shipmentId], references: [id])
+  user        User            @relation(fields: [userId], references: [id])
+}

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#faf8ff;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-secondary-container": "#fffbff", "primary-fixed": "#95f8a7", "on-tertiary-fixed": "#400013", "secondary-fixed": "#ffdad6", "on-error-container": "#93000a", "error-container": "#ffdad6", "secondary": "#bb0112", "surface-container-lowest": "#ffffff", "tertiary-container": "#b64c62", "on-error": "#ffffff", "primary": "#00652c", "on-tertiary-container": "#fff1f1", "surface-variant": "#dae2fd", "primary-fixed-dim": "#79db8d", "inverse-surface": "#283044", "surface-container": "#eaedff", "on-background": "#131b2e", "surface-container-high": "#e2e7ff", "primary-container": "#15803d", "on-primary-fixed-variant": "#005323", "on-tertiary-fixed-variant": "#81233b", "tertiary-fixed": "#ffd9dd", "on-surface-variant": "#3f493f", "outline-variant": "#becabc", "tertiary": "#97344a", "on-surface": "#131b2e", "surface-dim": "#d2d9f4", "inverse-primary": "#79db8d", "inverse-on-surface": "#eef0ff", "on-secondary": "#ffffff", "background": "#faf8ff", "surface-container-highest": "#dae2fd", "secondary-container": "#e02928", "on-primary-container": "#d3ffd5", "outline": "#6f7a6e", "surface-container-low": "#f2f3ff", "on-tertiary": "#ffffff", "on-primary-fixed": "#00210a", "on-secondary-fixed-variant": "#93000b", "on-secondary-fixed": "#410002", "surface-tint": "#006d30", "error": "#ba1a1a", "on-primary": "#ffffff", "tertiary-fixed-dim": "#ffb2bd", "surface-bright": "#faf8ff", "surface": "#faf8ff", "secondary-fixed-dim": "#ffb4ab" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "space-lg": "1rem", "space-xs": "0.25rem", "margin": "1.5rem", "space-sm": "0.5rem", "margin-mobile": "1rem", "space-md": "0.75rem", "space-xl": "1.5rem", "gutter": "1rem", "gutter-mobile": "0.75rem" }, fontFamily: { "metric-display-mobile": ["Inter"], "label-sm": ["Inter"], "headline-xl-mobile": ["Inter"], "metric-display": ["Inter"], "body-md": ["Inter"], "headline-lg-mobile": ["Inter"], "body-lg-medium": ["Inter"], "label-md": ["Inter"], "headline-xl": ["Inter"], "body-lg": ["Inter"], "body-md-medium": ["Inter"], "headline-lg": ["Inter"], "headline-md": ["Inter"] }, fontSize: { "metric-display-mobile": ["22px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "700" }], "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "600" }], "headline-xl-mobile": ["26px", { lineHeight: "32px", letterSpacing: "-0.02em", fontWeight: "700" }], "metric-display": ["28px", { lineHeight: "34px", letterSpacing: "-0.02em", fontWeight: "700" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-lg-mobile": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }], "body-lg-medium": ["16px", { lineHeight: "24px", fontWeight: "500" }], "label-md": ["13px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "600" }], "headline-xl": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "body-md-medium": ["14px", { lineHeight: "20px", fontWeight: "500" }], "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }], "headline-md": ["18px", { lineHeight: "24px", fontWeight: "600" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface flex flex-col antialiased min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="Logo Sokho Viandes" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1Vj9UBSiUAp2dYP8t9TonFvJHSo_VFcj6vAuUuh9F4BdHA-3ledPag2vgfPwnn3zXdf8Iqpx7Nt8vKv3AgUyq8S81siJC5fNKhvc-0CC4bzK8gb31Cz0V6u3AOU38gLv-TTwO24fWMJ88QjuJ_LAS4rjfdrh2WRAFlRT3owkAqjhK0CiFvTQIs-GiTAK8AG0y1CI2GKHXlG4ed91lDpBz74KEi483LkRrT-7kXuwFcwLG3jshP1UN_U0dqO"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-primary-container shrink-0 animate-pulse"></span><span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-semibold truncate">Connecté • Lomé (TG)</span></div><span class="font-headline-md text-headline-md text-on-surface truncate leading-tight font-bold">Commandes</span></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-on-surface rounded-lg transition-colors"><span class="material-symbols-outlined text-[24px]">notifications</span></button><div class="w-11 h-11 flex items-center justify-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxcnNvLNZgdRermoK0KEf02b4tk8u6_X_Kt7zcJWdnBSRmrXYtF_a4DEw5t-Wfz7SKGpu4V1fDLtS1X8sOGDywjEyExNBK1nOMiAA_o8VL4byJp9LeJtuftR80WLXDZSZXePc-LggDQ5KSMtsYSsWp2Y54KM9VpTe-VbYfas2DYThRMAUnzJZc6QmZvYx8BQp4SbaMy6p25mp-LUt4kFAIKMLFKLFZ9ay4UVKrqfM9nSD_l5ILNsmfRA"/></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full">
+<!-- Progress Stepper (Step 2 active) -->
+<div class="px-margin-mobile pt-space-md pb-space-sm bg-surface">
+<div class="flex items-center justify-between relative">
+<!-- Background Connecting Line -->
+<div class="absolute left-6 right-6 top-4 h-1 bg-surface-container-high -z-0"></div>
+<div class="absolute left-6 w-1/2 top-4 h-1 bg-primary-container -z-0"></div>
+<!-- Step 1: Validated -->
+<div class="flex flex-col items-center gap-1 z-10">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">1. Client</span>
+</div>
+<!-- Step 2: Active (Pesée) -->
+<div class="flex flex-col items-center gap-1 z-10">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md animate-pulse">
+<span class="material-symbols-outlined text-[18px]">scale</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">2. Produits</span>
+</div>
+<!-- Step 3: Upcoming -->
+<div class="flex flex-col items-center gap-1 z-10">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-semibold">3. Règlement</span>
+</div>
+</div>
+</div>
+<!-- Client Header Card (Lomé wholesale context) -->
+<div class="px-margin-mobile pt-space-xs pb-space-sm">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[24px]">storefront</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm bg-surface-variant text-on-surface-variant px-1.5 py-0.5 rounded">CHR Lomé</span>
+<span class="font-label-sm text-label-sm text-outline">ID #TG-842</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface truncate">Koffi Mensah</h2>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Restaurant La Grâce • Assivito</p>
+</div>
+</div>
+<button aria-label="Changer de client" class="min-h-[48px] px-3 flex items-center gap-1 text-primary hover:bg-surface-container-low rounded-lg transition-colors font-body-md-medium text-body-md-medium shrink-0" type="button">
+<span class="material-symbols-outlined text-[18px]">swap_horiz</span>
+<span>Changer</span>
+</button>
+</div>
+<!-- Credit Exposure Alert Badge -->
+<div class="mt-space-sm bg-error-container text-on-error-container rounded-lg p-space-sm flex items-start gap-2">
+<span class="material-symbols-outlined text-[20px] text-error shrink-0">warning</span>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between gap-1">
+<span class="font-body-md-medium text-body-md-medium font-bold text-on-error-container">Encours crédit : 85 000 FCFA</span>
+<span class="font-label-sm text-label-sm bg-error text-on-error px-1.5 py-0.5 rounded uppercase font-semibold">1 retard</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Facture #TG-0941 échue depuis 4 jours (Limite max autorisée : 150 000 FCFA)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Dynamic Weigh-in & Products Section -->
+<div class="px-margin-mobile flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">Pesée en direct</span>
+<span class="bg-primary-container text-on-primary text-label-sm font-label-sm px-2 py-0.5 rounded-full" id="product-count-chip">3 lots</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+        Balance Bluetooth connectée
+      </span>
+</div>
+<!-- Product Line 1: Bœuf -->
+<div class="product-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all" data-price="4500" data-weight="25">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[28px]">kebab_dining</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm uppercase font-semibold text-primary">Origine Sénégal</span>
+<span class="font-label-sm text-label-sm text-outline">• Lot #B-408</span>
+</div>
+<h3 class="font-body-lg-medium text-body-lg-medium text-on-surface">Viande de bœuf (Quartier arrière)</h3>
+<span class="font-body-md text-body-md text-on-surface-variant">4 500 FCFA / kg</span>
+</div>
+</div>
+<button aria-label="Supprimer la ligne" class="min-h-[48px] min-w-[48px] flex items-center justify-center text-outline hover:text-error transition-colors rounded-lg" type="button">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<!-- Ergonomic Quick Weigh Buttons (One Hand Friendly) -->
+<div class="mt-space-sm pt-space-sm bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Poids certifié :</span>
+<div class="flex items-baseline gap-1">
+<span class="weight-display font-metric-display-mobile text-metric-display-mobile text-on-surface">25.0</span>
+<span class="font-body-md-medium text-body-md-medium text-on-surface-variant">KG</span>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="min-h-[48px] bg-surface-container-lowest hover:bg-surface-variant active:bg-surface-dim rounded-lg font-body-lg-medium text-body-lg-medium text-on-surface flex items-center justify-center shadow-sm select-none" onclick="adjustWeight(this, -5)" type="button">
+            - 5kg
+          </button>
+<button class="min-h-[48px] bg-surface-container-lowest hover:bg-surface-variant active:bg-surface-dim rounded-lg font-body-lg-medium text-body-lg-medium text-on-surface flex items-center justify-center shadow-sm select-none" onclick="adjustWeight(this, -1)" type="button">
+            - 1kg
+          </button>
+<button class="min-h-[48px] bg-surface-container-lowest hover:bg-surface-variant active:bg-surface-dim rounded-lg font-body-lg-medium text-body-lg-medium text-on-surface flex items-center justify-center shadow-sm select-none" onclick="adjustWeight(this, 1)" type="button">
+            + 1kg
+          </button>
+<button class="min-h-[48px] bg-surface-container-lowest hover:bg-surface-variant active:bg-surface-dim rounded-lg font-body-lg-medium text-body-lg-medium text-on-surface flex items-center justify-center shadow-sm select-none" onclick="adjustWeight(this, 5)" type="button">
+            + 5kg
+          </button>
+</div>
+<div class="flex items-center justify-between pt-1">
+<button class="min-h-[48px] px-3 bg-surface-container text-on-surface rounded-lg font-body-md-medium text-body-md-medium flex items-center gap-1.5" onclick="promptManualWeight(this)" type="button">
+<span class="material-symbols-outlined text-[18px]">dialpad</span>
+<span>Clavier précis</span>
+</button>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline block">Total ligne</span>
+<span class="line-total font-headline-md text-headline-md text-primary font-bold">112 500 FCFA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Line 2: Mouton -->
+<div class="product-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all" data-price="5500" data-weight="10">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[28px]">set_meal</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm uppercase font-semibold text-primary">Sénégal Sahel</span>
+<span class="font-label-sm text-label-sm text-outline">• Lot #M-102</span>
+</div>
+<h3 class="font-body-lg-medium text-body-lg-medium text-on-surface">Viande de mouton entière</h3>
+<span class="font-body-md text-body-md text-on-surface-variant">5 500 FCFA / kg</span>
+</div>
+</div>
+<button aria-label="Supprimer la ligne" class="min-h-[48px] min-w-[48px] flex items-center justify-center text-outline hover:text-error transition-colors rounded-lg" type="button">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<div class="mt-space-sm pt-space-sm bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Poids certifié :</span>
+<div class="flex items-baseline gap-1">
+<span class="weight-display font-metric-display-mobile text-metric-display-mobile text-on-surface">10.0</span>
+<span class="font-body-md-medium text-body-md-medium text-on-surface-variant">KG</span>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="min-h-[48px] bg-surface-container-lowest hover:bg-surface-variant active:bg-surface-dim rounded-lg font-body-lg-medium text-body-lg-medium text-on-surface flex items-center justify-center shadow-sm select-none" onclick="adjustWeight(this, -5)" type="button">
+            - 5kg
+          </button>
+<button class="min-h-[48px] bg-surface-container-lowest hover:bg-surface-variant active:bg-surface-dim rounded-lg font-body-lg-medium text-body-lg-medium text-on-surface flex items-center justify-center shadow-sm select-none" onclick="adjustWeight(this, -1)" type="button">
+            - 1kg
+          </button>
+<button class="min-h-[48px] bg-surface-container-lowest hover:bg-surface-variant active:bg-surface-dim rounded-lg font-body-lg-medium text-body-lg-medium text-on-surface flex items-center justify-center shadow-sm select-none" onclick="adjustWeight(this, 1)" type="button">
+            + 1kg
+          </button>
+<button class="min-h-[48px] bg-surface-container-lowest hover:bg-surface-variant active:bg-surface-dim rounded-lg font-body-lg-medium text-body-lg-medium text-on-surface flex items-center justify-center shadow-sm select-none" onclick="adjustWeight(this, 5)" type="button">
+            + 5kg
+          </button>
+</div>
+<div class="flex items-center justify-between pt-1">
+<button class="min-h-[48px] px-3 bg-surface-container text-on-surface rounded-lg font-body-md-medium text-body-md-medium flex items-center gap-1.5" onclick="promptManualWeight(this)" type="button">
+<span class="material-symbols-outlined text-[18px]">dialpad</span>
+<span>Clavier précis</span>
+</button>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline block">Total ligne</span>
+<span class="line-total font-headline-md text-headline-md text-primary font-bold">55 000 FCFA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Line 3: Abats frais -->
+<div class="product-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm transition-all" data-price="3000" data-weight="5">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[28px]">lunch_dining</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm uppercase font-semibold text-primary">Abattage Lomé</span>
+<span class="font-label-sm text-label-sm text-outline">• Frais du matin</span>
+</div>
+<h3 class="font-body-lg-medium text-body-lg-medium text-on-surface">Abats frais mélangés (Foie/Tripes)</h3>
+<span class="font-body-md text-body-md text-on-surface-variant">3 000 FCFA / kg</span>
+</div>
+</div>
+<button aria-label="Supprimer la ligne" class="min-h-[48px] min-w-[48px] flex items-center justify-center text-outline hover:text-error transition-colors rounded-lg" type="button">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<div class="mt-space-sm pt-space-sm bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Poids certifié :</span>
+<div class="flex items-baseline gap-1">
+<span class="weight-display font-metric-display-mobile text-metric-display-mobile text-on-surface">5.0</span>
+<span class="font-body-md-medium text-body-md-medium text-on-surface-variant">KG</span>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="min-h-[48px] bg-surface-container-lowest hover:bg-surface-variant active:bg-surface-dim rounded-lg font-body-lg-medium text-body-lg-medium text-on-surface flex items-center justify-center shadow-sm select-none" onclick="adjustWeight(this, -5)" type="button">
+            - 5kg
+          </button>
+<button class="min-h-[48px] bg-surface-container-lowest hover:bg-surface-variant active:bg-surface-dim rounded-lg font-body-lg-medium text-body-lg-medium text-on-surface flex items-center justify-center shadow-sm select-none" onclick="adjustWeight(this, -1)" type="button">
+            - 1kg
+          </button>
+<button class="min-h-[48px] bg-surface-container-lowest hover:bg-surface-variant active:bg-surface-dim rounded-lg font-body-lg-medium text-body-lg-medium text-on-surface flex items-center justify-center shadow-sm select-none" onclick="adjustWeight(this, 1)" type="button">
+            + 1kg
+          </button>
+<button class="min-h-[48px] bg-surface-container-lowest hover:bg-surface-variant active:bg-surface-dim rounded-lg font-body-lg-medium text-body-lg-medium text-on-surface flex items-center justify-center shadow-sm select-none" onclick="adjustWeight(this, 5)" type="button">
+            + 5kg
+          </button>
+</div>
+<div class="flex items-center justify-between pt-1">
+<button class="min-h-[48px] px-3 bg-surface-container text-on-surface rounded-lg font-body-md-medium text-body-md-medium flex items-center gap-1.5" onclick="promptManualWeight(this)" type="button">
+<span class="material-symbols-outlined text-[18px]">dialpad</span>
+<span>Clavier précis</span>
+</button>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline block">Total ligne</span>
+<span class="line-total font-headline-md text-headline-md text-primary font-bold">15 000 FCFA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Add Product Fast Button -->
+<button class="min-h-[48px] w-full bg-surface-container-low hover:bg-surface-container-high text-primary font-body-lg-medium text-body-lg-medium rounded-xl flex items-center justify-center gap-2 py-3 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[22px]">add_circle</span>
+<span>Ajouter un produit (Poulet Goliath, Carton découpe...)</span>
+</button>
+</div>
+<!-- GRAND CALCULATEUR AUTOMATIQUE INTÉGRÉ (Encadré blanc surligné en vert #15803d) -->
+<div class="px-margin-mobile pt-space-md pb-space-sm">
+<div class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden">
+<!-- Green Accent Bar -->
+<div class="h-2 w-full bg-primary-container"></div>
+<div class="p-space-md flex flex-col gap-space-md">
+<!-- Subtotal Row with Visual Badge -->
+<div class="flex items-center justify-between pb-space-xs">
+<div>
+<span class="font-label-sm text-label-sm uppercase text-outline font-semibold tracking-wide">Sous-total Produits</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-sm text-label-sm bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded font-bold" id="summary-weight">40.0 KG cumulés</span>
+<span class="font-label-sm text-label-sm text-primary">Taux normal</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface font-bold" id="grand-subtotal">182 500 FCFA</span>
+</div>
+</div>
+<!-- Payment Immediate Input Block -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-xs">
+<label class="font-body-md-medium text-body-md-medium text-on-surface font-semibold flex items-center justify-between" for="payment-received">
+<span>Montant reçu immédiatement</span>
+<span class="font-label-sm text-label-sm text-primary">Espèces / T-Money / Moov</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined text-[24px] text-primary absolute left-3">payments</span>
+<input class="w-full h-14 pl-12 pr-20 bg-surface-container-lowest rounded-lg font-metric-display-mobile text-metric-display-mobile text-on-surface focus:outline-none focus:bg-surface-container-lowest text-left shadow-inner font-bold" id="payment-received" inputmode="numeric" oninput="handlePaymentInput(this)" type="text" value="100 000"/>
+<span class="absolute right-3 font-body-lg-medium text-body-lg-medium text-on-surface-variant font-semibold">FCFA</span>
+</div>
+<!-- Quick Cash Pill Presets -->
+<div class="flex items-center gap-2 pt-1 overflow-x-auto pb-1">
+<span class="font-label-sm text-label-sm text-outline shrink-0">Raccourcis:</span>
+<button class="min-h-[48px] px-3 py-1.5 bg-surface-container-lowest rounded-lg font-label-sm text-label-sm text-on-surface font-semibold shadow-sm shrink-0 active:bg-surface-variant" onclick="setCashAmount(50000)" type="button">50 000</button>
+<button class="min-h-[48px] px-3 py-1.5 bg-surface-container-lowest rounded-lg font-label-sm text-label-sm text-primary font-bold shadow-sm shrink-0 active:bg-surface-variant" onclick="setCashAmount(100000)" type="button">100 000</button>
+<button class="min-h-[48px] px-3 py-1.5 bg-primary-container text-on-primary rounded-lg font-label-sm text-label-sm font-semibold shadow-sm shrink-0" onclick="setCashTotal()" type="button">Tout payer (Solde)</button>
+</div>
+</div>
+<!-- Automatic Remaining Credit Calculation Result -->
+<div class="bg-surface-container-high rounded-xl p-space-md flex items-center justify-between transition-colors" id="credit-result-box">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">pending_actions</span>
+</div>
+<div class="min-w-0">
+<span class="font-label-sm text-label-sm uppercase font-bold text-secondary">Reste à payer en crédit</span>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Sera reporté sur le carnet client</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-headline-xl-mobile text-headline-xl-mobile text-secondary font-bold" id="credit-remaining-display">82 500 FCFA</span>
+</div>
+</div>
+<!-- Due Date Selector -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-body-md-medium text-body-md-medium text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px] text-primary">event</span>
+              Échéance du solde
+            </span>
+<span class="font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed px-2 py-0.5 rounded font-bold">Délai standard 7j</span>
+</div>
+<div class="flex items-center justify-between bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[22px] text-outline">calendar_month</span>
+<div>
+<span class="font-body-lg-medium text-body-lg-medium text-on-surface block font-bold">Vendredi 01 Novembre 2024</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Rappel SMS automatique à J-1</span>
+</div>
+</div>
+<button aria-label="Modifier date d'échéance" class="min-h-[48px] px-3 font-body-md-medium text-body-md-medium text-primary hover:bg-surface-container-low rounded-lg transition-colors" type="button">
+              Changer
+            </button>
+</div>
+</div>
+<!-- New Global Exposure Warning Calculation -->
+<div class="bg-surface-variant text-on-surface-variant rounded-lg p-space-sm flex items-center justify-between">
+<span class="font-label-sm text-label-sm">Nouvel encours total après validation :</span>
+<span class="font-body-md-medium text-body-md-medium text-on-surface font-bold" id="projected-exposure">167 500 FCFA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Sticky Action Buttons (Ergonomic for one-handed operation) -->
+<div class="px-margin-mobile pt-space-xs pb-space-lg flex flex-col gap-space-sm">
+<!-- Main Green Execution Button -->
+<button class="min-h-[56px] w-full bg-primary-container text-on-primary hover:opacity-95 active:scale-[0.99] font-body-lg-medium text-body-lg-medium font-bold rounded-xl flex items-center justify-center gap-2 py-3 shadow-md transition-all" id="btn-confirm-order" onclick="handleOrderSubmission()" type="button">
+<span class="material-symbols-outlined text-[24px]">task_alt</span>
+<span id="btn-label-total">VALIDER LA COMMANDE (182 500 FCFA)</span>
+</button>
+<!-- Secondary Draft Button -->
+<button class="min-h-[48px] w-full bg-surface-container-lowest hover:bg-surface-container text-on-surface font-body-md-medium text-body-md-medium rounded-xl flex items-center justify-center gap-2 py-2.5 shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px] text-outline">description</span>
+<span>Enregistrer comme devis / brouillon</span>
+</button>
+</div>
+</div>
+<script>
+  // Simple reactive store for the rapid order calculator
+  const state = {
+    products: [
+      { id: 1, name: 'Bœuf (Quartier arrière)', price: 4500, weight: 25.0 },
+      { id: 2, name: 'Mouton entier', price: 5500, weight: 10.0 },
+      { id: 3, name: 'Abats frais', price: 3000, weight: 5.0 }
+    ],
+    clientPastDebt: 85000,
+    paidAmount: 100000
+  };
+
+  function formatFCFA(val) {
+    return new Intl.NumberFormat('fr-FR').format(Math.round(val)) + ' FCFA';
+  }
+
+  function recalculateAll() {
+    let subtotal = 0;
+    let totalWeight = 0;
+
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach((card, index) => {
+      const price = parseFloat(card.getAttribute('data-price')) || 0;
+      const weight = parseFloat(card.getAttribute('data-weight')) || 0;
+      const lineTotal = price * weight;
+      
+      subtotal += lineTotal;
+      totalWeight += weight;
+
+      const totalEl = card.querySelector('.line-total');
+      if (totalEl) totalEl.textContent = formatFCFA(lineTotal);
+
+      const weightEl = card.querySelector('.weight-display');
+      if (weightEl) weightEl.textContent = weight.toFixed(1);
+    });
+
+    // Update Summary in Calculator Block
+    const grandSubtotalEl = document.getElementById('grand-subtotal');
+    if (grandSubtotalEl) grandSubtotalEl.textContent = formatFCFA(subtotal);
+
+    const summaryWeightEl = document.getElementById('summary-weight');
+    if (summaryWeightEl) summaryWeightEl.textContent = totalWeight.toFixed(1) + ' KG cumulés';
+
+    // Credit calculation
+    const remaining = Math.max(0, subtotal - state.paidAmount);
+    const creditDisplayEl = document.getElementById('credit-remaining-display');
+    const creditBoxEl = document.getElementById('credit-result-box');
+
+    if (creditDisplayEl) {
+      creditDisplayEl.textContent = formatFCFA(remaining);
+      if (remaining === 0) {
+        creditDisplayEl.classList.remove('text-secondary');
+        creditDisplayEl.classList.add('text-primary');
+        if (creditBoxEl) {
+          creditBoxEl.classList.remove('bg-surface-container-high');
+          creditBoxEl.classList.add('bg-primary-fixed-dim');
+        }
+      } else {
+        creditDisplayEl.classList.remove('text-primary');
+        creditDisplayEl.classList.add('text-secondary');
+        if (creditBoxEl) {
+          creditBoxEl.classList.remove('bg-primary-fixed-dim');
+          creditBoxEl.classList.add('bg-surface-container-high');
+        }
+      }
+    }
+
+    // Projected exposure update
+    const projectedExp = state.clientPastDebt + remaining;
+    const projectedEl = document.getElementById('projected-exposure');
+    if (projectedEl) projectedEl.textContent = formatFCFA(projectedExp);
+
+    // Main button text
+    const btnLabel = document.getElementById('btn-label-total');
+    if (btnLabel) btnLabel.textContent = `VALIDER LA COMMANDE (${formatFCFA(subtotal)})`;
+  }
+
+  function adjustWeight(button, delta) {
+    const card = button.closest('.product-card');
+    if (!card) return;
+    let currentWeight = parseFloat(card.getAttribute('data-weight')) || 0;
+    currentWeight = Math.max(0.5, currentWeight + delta);
+    card.setAttribute('data-weight', currentWeight.toString());
+    recalculateAll();
+  }
+
+  function promptManualWeight(button) {
+    const card = button.closest('.product-card');
+    if (!card) return;
+    const current = card.getAttribute('data-weight');
+    const val = prompt("Entrez le poids mesuré en Kilogrammes (ex: 27.5) :", current);
+    if (val !== null) {
+      const parsed = parseFloat(val.replace(',', '.'));
+      if (!isNaN(parsed) && parsed >= 0) {
+        card.setAttribute('data-weight', parsed.toString());
+        recalculateAll();
+      }
+    }
+  }
+
+  function handlePaymentInput(input) {
+    const rawVal = input.value.replace(/\s+/g, '').replace(/[^0-9]/g, '');
+    const num = parseInt(rawVal, 10) || 0;
+    state.paidAmount = num;
+    input.value = new Intl.NumberFormat('fr-FR').format(num);
+    recalculateAll();
+  }
+
+  function setCashAmount(val) {
+    state.paidAmount = val;
+    const input = document.getElementById('payment-received');
+    if (input) input.value = new Intl.NumberFormat('fr-FR').format(val);
+    recalculateAll();
+  }
+
+  function setCashTotal() {
+    let subtotal = 0;
+    document.querySelectorAll('.product-card').forEach(c => {
+      subtotal += (parseFloat(c.getAttribute('data-price')) || 0) * (parseFloat(c.getAttribute('data-weight')) || 0);
+    });
+    setCashAmount(subtotal);
+  }
+
+  function handleOrderSubmission() {
+    const btn = document.getElementById('btn-confirm-order');
+    if (!btn) return;
+    const originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = `<span class="material-symbols-outlined text-[24px] animate-spin">refresh</span><span>Émission reçu WhatsApp & Déstockage...</span>`;
+    
+    setTimeout(() => {
+      btn.innerHTML = `<span class="material-symbols-outlined text-[24px]">verified</span><span>Commande Enregistrée avec Succès !</span>`;
+      btn.classList.remove('bg-primary-container');
+      btn.classList.add('bg-primary');
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+        recalculateAll();
+      }, 2500);
+    }, 1000);
+  }
+
+  // Initial pass to guarantee mathematical precision
+  document.addEventListener('DOMContentLoaded', recalculateAll);
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/95 backdrop-blur-xl shadow-[0_-2px_10px_rgba(0,0,0,0.05)]" data-active-classes="text-primary font-semibold"><div class="flex justify-between items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center flex-1 h-full min-w-0 py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="tableau-de-bord" href="#"><span class="material-symbols-outlined text-[24px]">dashboard</span><span class="font-label-sm text-label-sm truncate mt-0.5">Tableau</span></a><a aria-current="page" class="flex flex-col items-center justify-center flex-1 h-full min-w-0 py-1 transition-colors text-primary font-semibold" data-path="commandes" href="#"><span class="material-symbols-outlined text-[24px]">receipt_long</span><span class="font-label-sm text-label-sm truncate mt-0.5">Commandes</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-0 py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="arrivages" href="#"><span class="material-symbols-outlined text-[24px]">local_shipping</span><span class="font-label-sm text-label-sm truncate mt-0.5">Arrivages</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-0 py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="credits" href="#"><span class="material-symbols-outlined text-[24px]">account_balance_wallet</span><span class="font-label-sm text-label-sm truncate mt-0.5">Crédits</span></a><a class="flex flex-col items-center justify-center flex-1 h-full min-w-0 py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="plus" href="#"><span class="material-symbols-outlined text-[24px]">grid_view</span><span class="font-label-sm text-label-sm truncate mt-0.5">Plus</span></a></div></nav></body></html>

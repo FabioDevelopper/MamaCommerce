@@ -1,0 +1,176 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  phone        String?
+  role         String    @default("STAFF") // "ADMIN", "MANAGER", "STAFF"
+  active       Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  orders       Order[]
+  payments     Payment[]
+  expenses     Expense[]
+}
+
+model Customer {
+  id           String    @id @default(uuid())
+  code         String    @unique
+  name         String
+  businessName String?
+  phone        String?
+  whatsapp     String?
+  email        String?
+  address      String?
+  city         String?   @default("Lomé")
+  creditLimit  Float     @default(0)
+  active       Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  orders       Order[]
+  payments     Payment[]
+}
+
+model Supplier {
+  id        String     @id @default(uuid())
+  code      String     @unique
+  name      String
+  company   String?
+  phone     String?
+  whatsapp  String?
+  email     String?
+  address   String?
+  country   String     @default("Sénégal")
+  active    Boolean    @default(true)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  shipments Shipment[]
+}
+
+model Product {
+  id             String          @id @default(uuid())
+  sku            String          @unique
+  name           String
+  description    String?
+  unit           String          @default("kg") // "kg", "pièce", "carton"
+  purchasePrice  Float           @default(0)
+  salePrice      Float           @default(0)
+  reorderLevel   Float           @default(10)
+  active         Boolean         @default(true)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  orderItems     OrderItem[]
+  shipmentItems  ShipmentItem[]
+  stockMovements StockMovement[]
+}
+
+model Shipment {
+  id            String         @id @default(uuid())
+  reference     String         @unique // e.g. ARR-2026-001
+  supplierId    String
+  origin        String         @default("Sénégal")
+  destination   String         @default("Togo")
+  status        String         @default("PLANNED") // "PLANNED", "IN_TRANSIT", "RECEIVED", "CANCELLED"
+  departureDate DateTime?
+  arrivalDate   DateTime?
+  transportCost Float          @default(0)
+  otherCosts    Float          @default(0)
+  notes         String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  supplier      Supplier       @relation(fields: [supplierId], references: [id])
+  items         ShipmentItem[]
+  expenses      Expense[]
+}
+
+model ShipmentItem {
+  id         String   @id @default(uuid())
+  shipmentId String
+  productId  String
+  quantity   Float
+  unitCost   Float
+  totalCost  Float
+  shipment   Shipment @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  product    Product  @relation(fields: [productId], references: [id])
+}
+
+model Order {
+  id          String      @id @default(uuid())
+  number      String      @unique // e.g. CMD-20260918-001
+  customerId  String?
+  userId      String
+  status      String      @default("CONFIRMED") // "CONFIRMED", "DELIVERED", "CANCELLED"
+  orderDate   DateTime    @default(now())
+  dueDate     DateTime?
+  subtotal    Float
+  discount    Float       @default(0)
+  total       Float
+  paidTotal   Float       @default(0)
+  creditTotal Float       @default(0)
+  notes       String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  customer    Customer?   @relation(fields: [customerId], references: [id])
+  user        User        @relation(fields: [userId], references: [id])
+  items       OrderItem[]
+  payments    Payment[]
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  productId String
+  quantity  Float
+  unitPrice Float
+  total     Float
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model Payment {
+  id         String    @id @default(uuid())
+  reference  String    @unique // e.g. PAY-20260918-001
+  orderId    String?
+  customerId String?
+  userId     String
+  amount     Float
+  method     String    @default("CASH") // "CASH", "TMONEY", "MOOV_MONEY", "BANK_TRANSFER", "OTHER"
+  receivedAt DateTime  @default(now())
+  note       String?
+  order      Order?    @relation(fields: [orderId], references: [id])
+  customer   Customer? @relation(fields: [customerId], references: [id])
+  user       User      @relation(fields: [userId], references: [id])
+}
+
+model StockMovement {
+  id        String   @id @default(uuid())
+  productId String
+  type      String   // "IN", "OUT", "ADJUSTMENT"
+  quantity  Float
+  unitCost  Float    @default(0)
+  reference String?
+  note      String?
+  createdAt DateTime @default(now())
+  product   Product  @relation(fields: [productId], references: [id])
+}
+
+model Expense {
+  id          String    @id @default(uuid())
+  reference   String    @unique // e.g. DEP-20260918-001
+  category    String    // "ACHAT", "TRANSPORT", "LIVRAISON", "CARBURANT", "COMMUNICATION", "MANUTENTION", "AUTRE"
+  amount      Float
+  expenseDate DateTime  @default(now())
+  description String?
+  shipmentId  String?
+  userId      String
+  shipment    Shipment? @relation(fields: [shipmentId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
+}
